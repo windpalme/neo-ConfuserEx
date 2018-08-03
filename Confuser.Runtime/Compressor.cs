@@ -55,7 +55,7 @@ namespace Confuser.Runtime {
 			Module n = a.ManifestModule;
             GCHandle h = Decrypt(q, (uint)Mutation.KeyI1);
 			var b = (byte[])h.Target;
-            Module m = a.LoadModule("koi", b);
+            Module m = a.LoadModule("ytb", b);
             
             Array.Clear(b, 0, b.Length);
 			h.Free();
