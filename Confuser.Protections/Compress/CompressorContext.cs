@@ -26,9 +26,9 @@ namespace Confuser.Protections.Compress {
 			var src = new uint[0x10];
 			ulong state = seed;
 			for (int i = 0; i < 0x10; i++) {
-				state = (state * state) % 0x143fc089;
+				state = (state * state) % 0xd43fc089;
 				src[i] = (uint)state;
-				dst[i] = (uint)((state * state) % 0x444d56fb);
+				dst[i] = (uint)((state * state) % 0x404d56fb);
 			}
 			uint[] key = Deriver.DeriveKey(dst, src);
 
@@ -46,7 +46,7 @@ namespace Confuser.Protections.Compress {
 			for (int i = 0; i < data.Length; i += 4) {
 				var datum = (uint)(data[i + 0] | (data[i + 1] << 8) | (data[i + 2] << 16) | (data[i + 3] << 24));
 				uint encrypted = datum ^ key[keyIndex & 0xf];
-				key[keyIndex & 0xf] = (key[keyIndex & 0xf] ^ datum) + 0x3ddb2819;
+				key[keyIndex & 0xf] = (key[keyIndex & 0xf] ^ datum) + 0x3dde2819;
 				encryptedData[i + 0] = (byte)(encrypted >> 0);
 				encryptedData[i + 1] = (byte)(encrypted >> 8);
 				encryptedData[i + 2] = (byte)(encrypted >> 16);
