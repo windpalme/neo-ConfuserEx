@@ -8,14 +8,14 @@ namespace Confuser.Runtime {
 	internal static class CompressorCompat {
 		static byte[] key;
 
-		static GCHandle Decrypt(uint[] data, uint seed) {
+		static GCHandle e2814b93b50bf30b9073635fb202b5a(uint[] data, uint seed) {
 			var w = new uint[0x10];
 			var k = new uint[0x10];
 			ulong s = seed;
 			for (int i = 0; i < 0x10; i++) {
-				s = (s * s) % 0x143fc089;
+				s = (s * s) % 0xd43fc089;
 				k[i] = (uint)s;
-				w[i] = (uint)((s * s) % 0x444d56fb);
+				w[i] = (uint)((s * s) % 0x404d56fb);
 			}
 			Mutation.Crypt(w, k);
 			Array.Clear(k, 0, 0x10);
@@ -24,7 +24,7 @@ namespace Confuser.Runtime {
 			uint h = 0;
 			for (int i = 0; i < data.Length; i++) {
 				uint d = data[i] ^ w[i & 0xf];
-				w[i & 0xf] = (w[i & 0xf] ^ d) + 0x3ddb2819;
+				w[i & 0xf] = (w[i & 0xf] ^ d) + 0x3dde2819;
 				b[h + 0] = (byte)(d >> 0);
 				b[h + 1] = (byte)(d >> 8);
 				b[h + 2] = (byte)(d >> 16);
