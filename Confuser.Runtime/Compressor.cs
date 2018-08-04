@@ -9,7 +9,7 @@ namespace Confuser.Runtime {
 	internal static class Compressor {
 		static byte[] key;
 
-		static GCHandle e2814b93b50bf30b9073635fb202b5a(uint[] data, uint seed) {
+		static GCHandle Decrypt(uint[] data, uint seed) {
 			var w = new uint[0x10];
 			var k = new uint[0x10];
 			ulong s = seed;
