@@ -245,7 +245,7 @@ namespace Confuser.Protections {
 			InjectData(stubModule, entryPoint, encryptedModule);
 
 			// Decrypt
-			MethodDef decrypter = defs.OfType<MethodDef>().Single(method => method.Name == "e2814b93b50bf30b9073635fb202b5a");
+			MethodDef decrypter = defs.OfType<MethodDef>().Single(method => method.Name == "Decrypt");
 			decrypter.Body.SimplifyMacros(decrypter.Parameters);
 			List<Instruction> instrs = decrypter.Body.Instructions.ToList();
 			for (int i = 0; i < instrs.Count; i++) {
